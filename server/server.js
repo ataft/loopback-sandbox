@@ -18,6 +18,20 @@ app.start = function() {
       var explorerPath = app.get('loopback-component-explorer').mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
+
+    var whereClause = {
+      where: {
+        or: [
+          { username: 'someone@gmail.com' },
+          { email: 'someone@gmail.com' }
+        ],
+      },
+    };
+    app.models.User.findOne(whereClause, function (err, user) {
+      console.log('err: ', err);
+      console.log('user: ', user);
+    });
+
   });
 };
 
