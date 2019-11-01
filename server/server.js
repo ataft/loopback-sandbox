@@ -21,7 +21,10 @@ app.start = function() {
 
     var whereClause = {
       where: {
-        email: 'someone@gmail.com'
+        or: [
+          {email: 'someone@gmail.com'},
+          {username: 'someone'},
+        ],
       },
     };
     app.models.User.findOne(whereClause, function (err, user) {
